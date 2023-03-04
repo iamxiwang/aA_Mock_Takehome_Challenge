@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_03_230042) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_04_000142) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,4 +24,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_03_230042) do
     t.index ["name"], name: "index_coffees_on_name", unique: true
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.string "title", null: false
+    t.bigint "coffee_id", null: false
+    t.text "text", null: false
+    t.float "rating", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["coffee_id"], name: "index_posts_on_coffee_id"
+  end
+
+  add_foreign_key "posts", "coffees"
 end
