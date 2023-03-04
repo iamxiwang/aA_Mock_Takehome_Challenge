@@ -11,9 +11,9 @@
 #  updated_at         :datetime         not null
 #
 class Coffee < ApplicationRecord
-    validates :name, :year, :caffine_content, :caffine_percentage, presence: true
-    
-    has_many:posts,
+    validates :year, :caffine_content, :caffine_percentage, presence: true
+    validates :name, presence: true, uniqueness: true
+    has_many :posts,
         class_name: :Post,
         foreign_key: :coffee_id
 end

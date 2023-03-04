@@ -11,8 +11,8 @@
 #  updated_at :datetime         not null
 #
 class Post < ApplicationRecord
-    
-    belongs_to:coffee,
+    validates :title, :coffee_id, :text, :rating, presence: true
+    belongs_to :coffee,
         foreign_key: :coffee_id,
         class_name: :Coffee
 end
