@@ -4,7 +4,7 @@ class CoffeesController < ApplicationController
     end
     
     def index
-        @coffees = Coffee.order('params[:order]').all
+        @coffees = Coffee.order('#{params[:order]}').all
         render :index
     end
 
