@@ -10,7 +10,29 @@ class PostsController  < ApplicationController
             render :index
         end
 
+        def show
+            @post = Post.find(params[:id])
+            render :show
+        end
 
+        def create
+            @post = Post.new(post_params)
+            if @post.save
+                render :show
+            else
+                render json:@post.errors.full_messages, status: 422
+            end
+        end
+
+        def destroy
+            @post = Post.find_by(id: params[:id])
+            if @post.destroy
+                render json: {messages: 'post is sucessfully removed'}
+            end
+        end
+            
+
+        
 
 
 end
