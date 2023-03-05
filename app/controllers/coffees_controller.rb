@@ -4,7 +4,11 @@ class CoffeesController < ApplicationController
     end
     
     def index
-        @coffees = Coffee.order('#{params[:order]}').all
+        query = params[:order]
+        if query == 'asc'
+            @coffees = Coffee.order(:name).all
+        else
+            @coffees = Coffee.order(name: :desc).all
         render :index
     end
 

@@ -6,7 +6,12 @@ class PostsController  < ApplicationController
         end
 
         def index
-            @posts = Post.order('#{params[:order]}').all
+            query = params[:order]
+            if query == 'asc'
+                @posts = Post.order(:created_at)
+            else
+                @posts = Post.order(created_at: :desc)
+            end
             render :index
         end
 
