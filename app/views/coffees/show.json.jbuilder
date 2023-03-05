@@ -1,0 +1,1 @@
+json.extract! @coffee, :id, :name, :year, :caffine_content, :caffine_percentage

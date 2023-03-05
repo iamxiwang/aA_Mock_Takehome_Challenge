@@ -1,0 +1,1 @@
+json.extract! @post, :id, :title, :coffee_id, :text, :rating
