@@ -30,4 +30,13 @@ class CoffeesController < ApplicationController
         end
     end
 
+
+    private
+
+    def coffee_params
+        params.require(:coffee).permit(
+            :name, :year, :caffine_content, :caffine_percentage
+        )
+    end
+
 end

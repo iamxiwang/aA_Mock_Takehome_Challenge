@@ -31,8 +31,13 @@ class PostsController  < ApplicationController
             end
         end
             
+        private
 
-        
+        def post_prarms
+
+            params.require(:post).permit(:title, :coffee_id,:text,:rating)
+        end
+
 
 
 end
