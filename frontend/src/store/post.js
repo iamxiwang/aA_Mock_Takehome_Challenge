@@ -5,17 +5,17 @@ export const REMOVE_POST = 'posts/REMOVE_POST'
 //action creator 
 
 const receivePosts = (posts) => ({
-    typeof: RECEIVE_POSTS,
+    type: RECEIVE_POSTS,
     payload: posts
 })
 
 const receivePost = (post) => ({
-    typeof: RECEIVE_POST,
+    type: RECEIVE_POST,
     payload: post
 })
 
 const removePost = (postId) =>({
-    typeof: REMOVE_POST,
+    type: REMOVE_POST,
     payload: postId
 })
 
@@ -78,3 +78,21 @@ export const deletePost = (postId) => async(dispatch) => {
         dispatch(removePost(postId))
     }
 }
+//reducer
+
+const postsReducer =(state={}, action) => {
+    switch(action.type){
+        case RECEIVE_POSTS:
+            return {...action.payload}
+        case RECEIVE_POST:
+            return {...state, [action.payload.id]: action.payload}
+        case REMOVE_POST:
+            const newState = {...state}
+            delete newState[action.payload]
+            return newState
+        default:
+            return state
+    }
+}
+
+export default postsReducer
