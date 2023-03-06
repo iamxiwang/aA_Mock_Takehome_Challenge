@@ -17,3 +17,21 @@ const removeCoffee = (coffeeId) => ({
     type: REMOVE_COFFEE,
     payload: coffeeId
 })
+
+// store selector
+
+export const getCoffees = (state) => {
+    if (state && state.coffees){
+        return Object.values(state.coffees)
+    }
+    return [];
+}
+
+
+export const getCoffee = (coffeeId) =>(state) => {
+    if(state && state.coffees){
+        return state.coffees[coffeeId]
+    }else{
+        return null
+    }
+}
