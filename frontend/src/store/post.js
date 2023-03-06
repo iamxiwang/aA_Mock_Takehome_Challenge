@@ -69,3 +69,12 @@ export const createPost = (post) => async(dispatch) =>{
         dispatch(receivePost(data))
     }
 }
+
+export const deletePost = (postId) => async(dispatch) => {
+    const res = await fetch(`/post/${postId}`, {
+        method: 'DELETE'
+    })
+    if(res.ok){
+        dispatch(removePost(postId))
+    }
+}
