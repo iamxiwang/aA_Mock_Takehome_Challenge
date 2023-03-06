@@ -36,3 +36,12 @@ export const getPost =(postId) => (state) => {
         return null
     }
 }
+// thunk action
+
+export const fetchPosts =(order) => async(dispatch) => {
+    const res = await fetch(`/posts?query=${order}`)
+    if (res.ok){
+        const data = await res.json()
+        dispatch(receivePosts(data))
+    }
+}
