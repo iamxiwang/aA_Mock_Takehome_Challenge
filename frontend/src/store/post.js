@@ -19,3 +19,20 @@ const removePost = (postId) =>({
     payload: postId
 })
 
+// store selector
+
+export const getPosts =(state) => {
+    if(state && state.posts){
+        return Object.values(state.posts)
+    }
+    return []
+}
+
+
+export const getPost =(postId) => (state) => {
+    if(state && state.posts){
+        return state.posts[postId]
+    }else{
+        return null
+    }
+}
