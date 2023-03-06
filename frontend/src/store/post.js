@@ -45,3 +45,27 @@ export const fetchPosts =(order) => async(dispatch) => {
         dispatch(receivePosts(data))
     }
 }
+
+export const fetchPost = (postId) => async(dispatch) => {
+    const res = await fetch(`/post/${postId}`)
+
+    if(res.ok){
+        const data = await res.json();
+        dispatch(receivePost(data))
+    }
+}
+
+export const createPost = (post) => async(dispatch) =>{
+    const res = await fetch('/post/create',{
+        method: 'POST',
+        headers: {
+            'Content-Type':'application/json'
+        },
+        body: JSON.stringify(post)
+    })
+
+    if(res.ok){
+        const data = await res.json()
+        dispatch(receivePost(data))
+    }
+}
