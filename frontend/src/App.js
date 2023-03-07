@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Splash from './components/Splash'
 
 function App() {
