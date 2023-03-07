@@ -1,29 +1,30 @@
 import {useDispatch, useSelector} from 'react-redux'
-import { useEffect } from 'react'
+import { useState,useEffect } from 'react'
 import PostItem from './PostItem'
 import {getPosts, fetchPosts} from '../../store/post.js'
-
+import './post.css'
 const PostIndex= () => {
-
+    const [order, setOrder] = useState('asc')
     const dispatch = useDispatch()
     const posts = useSelector(getPosts)
 
     useEffect( () => {
-        dispatch(fetchPosts())
+        dispatch(fetchPosts(order))
     })
 
+    
     return (
-        <div>
+        <div className='post-section'>
             <div className='post-title'>
                 <h1>Posts</h1>
 
-                <select name="" id="">
-                    <option value="">asc
-
+                <select id="select">
+                    <option value="asc" 
+                    onChange={() => setOrder('asc')}>asc
                     </option>
 
-                    <option value="
-                    ">desc</option>
+                    <option value="desc"
+                    onChange={() => setOrder('desc')}>desc</option>
                 </select>
             </div>
 

@@ -3,7 +3,7 @@ import PostIndex from "../PostIndex"
 
 const Splash =() => {
     return (
-        <div>hello world
+        <div>
             <PostIndex />
         </div>
     )
