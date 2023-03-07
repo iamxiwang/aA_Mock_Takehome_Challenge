@@ -1,15 +1,16 @@
+import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from 'redux-thunk'
 import postsReducer from './post'
-import coffeesReducer from '/coffee'
+import coffeesReducer from './coffee'
 
-const rootReducer = combineReducer({
+const rootReducer = combineReducers({
     posts: postsReducer,
     coffees: coffeesReducer
 })
 
 let enhancer;
 
-if(ProcessingInstruction.env.NODE_ENV === 'porduction'){
+if (process.env.NODE_ENV === 'production') {
     enhancer = applyMiddleware(thunk);
 }else{
     const logger = require('redux-logger').default;

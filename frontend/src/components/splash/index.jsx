@@ -1,11 +1,11 @@
-
+import PostIndex from "../PostIndex"
 
 
 const Splash =() => {
     return (
-        <>
-        <div>Hello world</div>
-        </>
+        <div>hello world
+            <PostIndex />
+        </div>
     )
 }
 

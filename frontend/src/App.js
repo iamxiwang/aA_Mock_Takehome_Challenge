@@ -6,13 +6,9 @@ import Splash from './components/Splash'
 function App() {
   return (
     <>
-    <BrowserRouter>
         <Switch>
-    
-          <Route exact path='/' component={Splash}></Route>
-          
+          <Route exact path='/' component={Splash}></Route>    
         </Switch>
-    </BrowserRouter>
     </>
   );
 }

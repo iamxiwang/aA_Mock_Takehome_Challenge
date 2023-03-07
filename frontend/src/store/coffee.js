@@ -35,3 +35,22 @@ export const getCoffee = (coffeeId) =>(state) => {
         return null
     }
 }
+
+const coffeesReducer = (state={}, action) =>{
+    switch(action.type){
+        case RECEIVE_COFFEES:
+            return{...action.payload}
+        case RECEIVE_COFFEE:
+            return {
+                ...state,[action.payload.id]: action.payload
+            }
+        case REMOVE_COFFEE:
+            const newState = {...state};
+            delete newState[action.payload];
+            return newState
+        default:
+            return state
+    }
+}
+
+export default coffeesReducer
